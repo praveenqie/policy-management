@@ -1,0 +1,45 @@
+create schema policy
+===========================================================================================================
+
+INSERT INTO `policy`.`users`
+(
+`address`,
+`contact_number`,
+`dob`,
+`email`,
+`first_name`,
+`last_name`,
+`password`)
+VALUES
+('bangalore',8884718159,'1996-01-08','praveen@gmail.com','praveen','kumar','praveen@12345'),
+('mangalore',4336643221,'1993-01-08','naveen@gmail.com','naveen','kumar','naveen@12345'),
+('mysore',9646853654,'1996-01-08','gowtham@gmail.com','gowtham','pande','gowtham@12345'),
+('mandya',9876577578,'1999-01-08','nuthan@gmail.com','nuthan','desai','nuthan@12345'),
+('shivmogha',9768546876,'2000-01-08','chandan@gmail.com','chandan','kanya','chandan@12345');
+
+========================================================================================================
+INSERT INTO `policy`.`policies`
+(`policy_details`,
+`policy_name`)
+VALUES
+('LIC Jeevan Umang','18 years-65 years,Min-Rs.50,00,000 Max- No upper Limit'),
+('LIC Money Back 25  years','13 years-45 years,Min-Rs.1,00,000 Max- No upper limit'),
+('LIC New Jeevan Anand','18 years- 50 years,Min- Rs.1,00,000 Max- No upper limit'),
+('LIC Jeevan Amar','18 years- 65 years,Min-Rs.25,00,000 Maximum- No upper limit'),
+('LIC Tech Term Plan','18 years-50 years,Min-Rs.50,00,000 Max- No upper Limit');
+
+
+========================================================================================================
+INSERT INTO `policy`.`policy_details`
+(
+`aamount_paid`,
+`policy_end_date`,
+`policy_name`,
+`valid`,
+`users_id`)
+VALUES
+(10000,'2030-01-08','LIC Jeevan Umang',true,67575),
+(500,'2030-01-08','LIC Jeevan Umang',true,486482),
+(10000,'2030-01-08','New Jeevan Anand',true,486482),
+(10000,'2030-01-08','Jeevan Amar',true,486482),
+(10000,'2030-01-08','Tech Term Plan',true,646433);

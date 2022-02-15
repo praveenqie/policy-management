@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class PolicyDetails {
 	
@@ -22,6 +24,7 @@ public class PolicyDetails {
 	
 	private Double aamountPaid;
 	
+	@UpdateTimestamp
 	private Date policyEndDate;
 	
 	private boolean valid;
@@ -78,9 +81,21 @@ public class PolicyDetails {
 		this.users = users;
 	}
 
+	public PolicyDetails(String policyName, Double aamountPaid, boolean valid, Users users) {
+		super();
+		this.policyName = policyName;
+		this.aamountPaid = aamountPaid;
+		this.valid = valid;
+		this.users = users;
+	}
+
 	public PolicyDetails() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	@Override

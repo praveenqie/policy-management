@@ -43,6 +43,10 @@ public class Policies {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Long getId() {
+		return id;
+	}
+
 	@Override
 	public String toString() {
 		return "Policies [id=" + id + ", policyName=" + policyName + ", policyDetails=" + policyDetails + "]";

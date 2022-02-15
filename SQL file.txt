@@ -22,8 +22,8 @@ INSERT INTO `policy`.`policies`
 (`policy_details`,
 `policy_name`)
 VALUES
-('LIC Jeevan Umang','18 years-65 years,Min-Rs.50,00,000 Max- No upper Limit'),
-('LIC Money Back 25  years','13 years-45 years,Min-Rs.1,00,000 Max- No upper limit'),
+('18 years-65 years,Min-Rs.50,00,000 Max- No upper Limit','LIC Jeevan Umang'),
+('13 years-45 years,Min-Rs.1,00,000 Max- No upper limit','LIC Money Back 25  years'),
 ('LIC New Jeevan Anand','18 years- 50 years,Min- Rs.1,00,000 Max- No upper limit'),
 ('LIC Jeevan Amar','18 years- 65 years,Min-Rs.25,00,000 Maximum- No upper limit'),
 ('LIC Tech Term Plan','18 years-50 years,Min-Rs.50,00,000 Max- No upper Limit');

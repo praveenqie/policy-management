@@ -1,6 +1,10 @@
 package com.policy.service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +17,7 @@ import com.policy.dto.LoginRequestDTO;
 import com.policy.dto.PolicyDetailsResponseDTO;
 import com.policy.dto.RegisterUserRequestDTO;
 import com.policy.dto.Response;
+import com.policy.dto.UsersPolicyResponseDTO;
 import com.policy.entity.Policies;
 import com.policy.entity.PolicyDetails;
 import com.policy.entity.Users;
@@ -38,12 +43,26 @@ public class PolicyServiceImpl implements PolicyService {
 		if (Objects.isNull(registerUserRequestDTO)) {
 			throw new PolicyExceptions("request should not be empty");
 		}
+		if (Objects.isNull(registerUserRequestDTO.getFirstName())
+				|| Objects.isNull(registerUserRequestDTO.getLastName())
+				|| Objects.isNull(registerUserRequestDTO.getAddress())
+				|| Objects.isNull(registerUserRequestDTO.getContactNumber())
+				|| Objects.isNull(registerUserRequestDTO.getContactNumber())
+				|| Objects.isNull(registerUserRequestDTO.getEmail())
+				|| Objects.isNull(registerUserRequestDTO.getPassword())
+
+		) {
+			throw new PolicyExceptions("request should not be empty");
+		}
 		Users users = new Users(registerUserRequestDTO.getFirstName(), registerUserRequestDTO.getLastName(),
 				registerUserRequestDTO.getDob(), registerUserRequestDTO.getAddress(),
 				registerUserRequestDTO.getContactNumber(), registerUserRequestDTO.getEmail(),
 				registerUserRequestDTO.getPassword());
-		usersRepossitory.save(users);
-		return new Response("User Registered Successfully!", 200);
+		users = usersRepossitory.save(users);
+		
+		PolicyDetails policyDetails=new PolicyDetails("Govt Free Policy", 0.0, true,users);
+		policyDetailsRepository.save(policyDetails);
+		return new Response("User Registered Successfully!", 200,users.getId());
 	}
 
 	@Override
@@ -70,15 +89,20 @@ public class PolicyServiceImpl implements PolicyService {
 	}
 
 	@Override
-	public List<PolicyDetails> getPolicyDetails(Long custId) throws PolicyExceptions {
+	public UsersPolicyResponseDTO getPolicyDetails(Long custId) throws PolicyExceptions {
 		List<PolicyDetails> details = new ArrayList<PolicyDetails>();
-		if(!Objects.nonNull(custId) && custId >0) {
+		if (!Objects.nonNull(custId) && custId > 0) {
 			throw new PolicyExceptions("customer id is invaild");
 		}
-		//details = policyDetailsRepository.findAll();
-		details =  policyDetailsRepository.getPolicyDetailsByCustId(custId);
-		return details;
+		// details = policyDetailsRepository.findAll();
+		details = policyDetailsRepository.getPolicyDetailsByCustId(custId);
 		
+		UsersPolicyResponseDTO policyResponseDTO = new UsersPolicyResponseDTO();
+		policyResponseDTO.setPolicyDetails(details);
+		policyResponseDTO.setUsers(details.get(0).getUsers());
+		return policyResponseDTO;
+		
+
 	}
 
 }

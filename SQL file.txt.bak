@@ -38,8 +38,8 @@ INSERT INTO `policy`.`policy_details`
 `valid`,
 `users_id`)
 VALUES
-(10000,'2030-01-08','LIC Jeevan Umang',true,1),
-(500,'2030-01-08','LIC Jeevan Umang',true,2),
-(10000,'2030-01-08','New Jeevan Anand',true,2),
-(10000,'2030-01-08','Jeevan Amar',true,2),
-(10000,'2030-01-08','Tech Term Plan',true,3);
+(10000,'2030-01-08','LIC Jeevan Umang',true,67575),
+(500,'2030-01-08','LIC Jeevan Umang',true,486482),
+(10000,'2030-01-08','New Jeevan Anand',true,486482),
+(10000,'2030-01-08','Jeevan Amar',true,486482),
+(10000,'2030-01-08','Tech Term Plan',true,646433);
